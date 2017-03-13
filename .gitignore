@@ -1,0 +1,4 @@
+# ignorar los archivos que coincidan con los siguientes patrones 
+
+.env
+vendor/
