@@ -1,10 +1,10 @@
 $("#registroUsuario").click(function(){
-	var name = $("#name").val();
-	var email = $("#email").val();
+	var name =  $("#name").val();
+	var email =  $("#email").val();
 	var address = $("#address").val();
-	var password = $("#password").val();
-	var state = $("#state").val();
-	var type = $("#type").val();
+	var password =  $("#password").val();
+	var state =  $("#state").val();
+	var type =  $("#type").val();
 
 	var route = "/usuario";
 	var token = $("#token").val();
@@ -18,11 +18,12 @@ $("#registroUsuario").click(function(){
 
 		success:function(msj){
 			//$("#msj-success").fadeIn();
-			mensajes(msj,'1');
+			
+			mensajes(msj,'1','msj-error','form-errors','msj-success','form-okMessages');
 		},
 		error:function(msj){
 			
-			mensajes(msj,'1');
+			mensajes(msj,'1','msj-error','form-errors','msj-success','form-okMessages');
 			//$("#msj-error").fadeIn();
 		}
 	});
@@ -30,7 +31,8 @@ $("#registroUsuario").click(function(){
 
 
 
-var mensajes = function( jqXhr, eval ) {
+var mensajes = function( jqXhr, eval, errorPanelMensaje, formErrorMensaje, okPanelMensaje, formokMessages ) {
+	
 	
 	
 	if( jqXhr.status === 401 ){
@@ -39,7 +41,8 @@ var mensajes = function( jqXhr, eval ) {
     }
 	if( jqXhr.status === 422 ) {
 		//error de validacion
-		$("#msj-error").fadeIn();
+		$("#"+errorPanelMensaje).fadeIn();
+
 		//procesar error
 		var errors = jqXhr.responseJSON; //obtener la data del error
 
@@ -47,17 +50,30 @@ var mensajes = function( jqXhr, eval ) {
 		errorsHtml = '<ul>';
 
 		$.each( errors , function( key, value ) {
-			errorsHtml += '<li>' + value[0] + '</li>'; //agregar cada uno de los
+			errorsHtml += '<li>' + value[0] + '</li>'; //agregar cada uno de los errores
+			
 		});
 		errorsHtml += '</ul>';
 			
-		$( '#form-errors' ).html( errorsHtml ); //cerrando el mensaje de error
+		$( '#' + formErrorMensaje ).html( errorsHtml ); //cerrando el mensaje de error
 
 	} 
 
+	if (jqXhr.status === 500) {
+		//error de validacion
+		$("#" + okPanelMensaje).fadeIn();
+
+		okResponseHtml = '<ul>';
+		okResponseHtml += '<li>Registro realizado con exito</li>'; 
+		okResponseHtml += '<li>Error al intentar enviar correo de bienvenida</li>'; 
+		okResponseHtml += '</ul>';
+			
+		$( '#' + formokMessages).html( okResponseHtml ); 
+	}
+
 	if (jqXhr.status === '200' ) {
 		
-		$("#msj-success").fadeIn();
+		$("#" + okPanelMensaje).fadeIn();
 		
 		okResponseHtml = '<ul>';
 		okResponseHtml += '<li>' + jqXhr.menssage + '</li>'; 
@@ -65,7 +81,7 @@ var mensajes = function( jqXhr, eval ) {
 		
 		
 
-		$( '#form-okMessages').html( okResponseHtml ); 
+		$( '#' + formokMessages).html( okResponseHtml ); 
 
 		if(eval == '1'){
 			$.ajax({
@@ -103,6 +119,7 @@ function Mostrar(id){
 
 
 $("#actualizarUsuario").click(function(){
+
 	var value = $("#id").val();
 	var name = $("#name").val();
 	var email = $("#email").val();
@@ -123,7 +140,13 @@ $("#actualizarUsuario").click(function(){
 			Carga();
 			$("#myModal").modal('toggle');
 			//$("#msj-success").fadeIn();
-			mensajes(msj,'0');
+			
+			mensajes(msj,'0','msj-errorDetalle','form-errorsDetalle','msj-success','form-okMessages');
+		},
+		error:function(msj){
+			
+			mensajes(msj,'0','msj-errorDetalle','form-errorsDetalle','msj-success','form-okMessages');
+			//$("#msj-error").fadeIn();
 		}
 	});
 });

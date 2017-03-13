@@ -2,8 +2,6 @@
 
 Proyecto en PHP Laravel que permite registrar, listar, editar y eliminar usuarios. Tiene dos niveles: administrador y usuario. El administrador puede registrar, modificar y eliminar usuarios. El usuario sólo puede modificar su perfil.
 
-## 
-
 ## Instalación
 
 ### Usando php artisan serve
@@ -117,3 +115,18 @@ Ejecutar los comandos:
 php artisan key:generate
 php artisan config:clear
 
+## Configuración para enviar correo
+1. Abrir el archivo userProject/.env y editar los siguientes parámetros
+
+MAIL_DRIVER=smtp                   => driver de conexión
+MAIL_HOST=mail.gmail.com           => servidor de correo
+MAIL_PORT=587                      => Puerto de conexión
+MAIL_USERNAME=corre@gmail.com      => Usuario de conexión al servidor de correo
+MAIL_PASSWORD=contraseña           => Contraseña del usuario
+MAIL_ENCRYPTION=tls
+ 
+2. Por defecto la configuración de la app esta hecha para que funcione con gmail pero si desea cambiar el servidor de correo se debe modificar en el archivo userProject/conf/mail.php los siguiente parámetros:
+'host' => env('MAIL_HOST', 'ssl://smtp.gmail.com'),            => Dirección del servidor de correo
+'port' => env('MAIL_PORT', 465),                               => Puerto del serivdor de correo
+'address' => env('MAIL_FROM_ADDRESS', 'usuario@gmail.com'),    => Direccion de correo del remitente
+'name' => env('MAIL_FROM_NAME', 'Nombre del usuario'),         => Nombre del remitente

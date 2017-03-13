@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         //php artisan db:seeed
-        BD::table('users')->insert([
+        DB::table('users')->insert([
         	'name' => 'Adminstrador',
             'email' => 'admin@test.com',
             'password' => bcrypt('123'),
@@ -20,6 +20,16 @@ class UserTableSeeder extends Seeder
             'state' => 'A',
             'type' => 'A'
         	]);
+
+        DB::table('users')->insert([
+            'name' => 'Invitado',
+            'email' => 'invitado@test.com',
+            'password' => bcrypt('123'),
+            'address' => 'Invitado',
+            'state' => 'A',
+            'type' => 'U'
+            ]);
+
 
     }
 }

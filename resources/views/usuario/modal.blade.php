@@ -6,12 +6,15 @@
         <h4 class="modal-title" id="myModalLabel">Actualizar Usuario</h4>
       </div>
       <div class="modal-body">
+          <div id="msj-errorDetalle" class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+            <strong id="form-errorsDetalle">Error</strong>
+          </div>
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token" />
         <input type="hidden" id="id" />
         @include('usuario.forms.user')
       </div>
       <div class="modal-footer">
-      {!!link_to('#', $title='ActualizarUsuario', $attributes = ['id'=>'actualizarUsuario', 'class'=>'btn btn-primary'], $secure = null)!!}
+      {!!link_to('#', $title='Actualizar Usuario', $attributes = ['id'=>'actualizarUsuario', 'class'=>'btn btn-primary'], $secure = null)!!}
       </div>
     </div>
   </div>

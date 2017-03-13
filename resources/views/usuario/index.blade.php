@@ -3,7 +3,7 @@
 
 @section('content')
 
-
+	@include('usuario.modal')
 	
 	@if(Auth::check())
         @if(Auth::user()->type=='A')

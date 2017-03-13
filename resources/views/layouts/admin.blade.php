@@ -81,10 +81,9 @@
         <div id="page-wrapper">
 
             @include('alerts.errors')
+
             @include('alerts.message')
-
-            @include('usuario.modal')
-
+            
             @yield('content')
 
         </div>

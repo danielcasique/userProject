@@ -6,6 +6,8 @@ $(document).ready(function(){
 
 
 function Eliminar(id){
+
+	
 	var route = "/usuario/"+id+"";
 	var token = $("#token").val();
 

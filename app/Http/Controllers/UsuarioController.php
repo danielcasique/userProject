@@ -85,7 +85,7 @@ class UsuarioController extends Controller
                 $url_redirect =  '';
             }
 
-            //Mail::to($request['email'])->send(new NuevoUsuario($request['name'],$request['email']));
+            Mail::to($request['email'])->send(new NuevoUsuario($request['name'],$request['email']));
             //
             /*
             return response()
