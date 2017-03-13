@@ -22,7 +22,7 @@ Proyecto en PHP Laravel que permite registrar, listar, editar y eliminar usuario
 
 3. Actualizar las dependecias con el comando composer
 
-composer update
+	composer update
 
 4. En la carpeta userProject se encuentra el archivo .env.example, abrir este archivo y modificar los siguientes parámetros
 
