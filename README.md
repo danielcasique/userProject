@@ -118,12 +118,12 @@ php artisan config:clear
 ## Configuración para enviar correo
 1. Abrir el archivo userProject/.env y editar los siguientes parámetros
 
-MAIL_DRIVER=smtp                   => driver de conexión
-MAIL_HOST=mail.gmail.com           => servidor de correo
-MAIL_PORT=587                      => Puerto de conexión
-MAIL_USERNAME=corre@gmail.com      => Usuario de conexión al servidor de correo
-MAIL_PASSWORD=contraseña           => Contraseña del usuario
-MAIL_ENCRYPTION=tls
+	MAIL_DRIVER=smtp                   => driver de conexión
+	MAIL_HOST=mail.gmail.com           => servidor de correo
+	MAIL_PORT=587                      => Puerto de conexión
+	MAIL_USERNAME=corre@gmail.com      => Usuario de conexión al servidor de correo
+	MAIL_PASSWORD=contraseña           => Contraseña del usuario
+	MAIL_ENCRYPTION=tls
  
 2. Por defecto la configuración de la app esta hecha para que funcione con gmail pero si desea cambiar el servidor de correo se debe modificar en el archivo userProject/conf/mail.php los siguiente parámetros:
 'host' => env('MAIL_HOST', 'ssl://smtp.gmail.com'),            => Dirección del servidor de correo
